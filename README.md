@@ -13,7 +13,7 @@ Copy over the Makefile (just beware if you made custom targets/dependencies)
 # TESTS
 
 ## Semaphore Testing
-Use Brandon Milton's tests to run that - make sure you comment out all DPrintf
+Use Brandon Milton's tests to run that - make sure you comment out ALL DPrintf
 statements in your mykernel3.c
 Compile with:
 > make semtest
@@ -117,3 +117,8 @@ Kernel Panic! Processes 2, 3 and 4 are deadlocked
 System exiting (abnormal)
 
 Not 100% sure it works since with my bug fix I think it's covered, but if you can generate the Kernel Panic/Deadlock then this is working as intended.
+
+## Lastly
+Make sure before you turnin you uncomment Main() in pa3d.
+
+If you have any other changes, feel free to submit a pull request!
