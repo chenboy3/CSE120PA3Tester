@@ -91,8 +91,7 @@ Is my own custom test, because I had a stupid bug where when one car finishes an
 
 For example: (3 approved to enter road, doesn't update the number of cars yet as context switch to 4, so 4 is approved to enter road as number of cars on road is still 0)  
 
->
-W---------1E Car 1 enters at 10 at 40 mph  
+>W---------1E Car 1 enters at 10 at 40 mph  
 W--------1-E Car 1 moves from 10 to 9  
 W-------1--E Car 1 moves from 9 to 8  
 W------1---E Car 1 moves from 8 to 7  
@@ -113,7 +112,7 @@ W--4---3---E Car 4 moves from 2 to 3
 W--4--3----E Car 3 moves from 7 to 6  
 W---4-3----E Car 4 moves from 3 to 4  
 W---43-----E Car 3 moves from 6 to 5  
-Kernel Panic! Processes 2, 3 and 4 are deadlocked
+Kernel Panic! Processes 2, 3 and 4 are deadlocked  
 System exiting (abnormal)
 
 Not 100% sure it works since with my bug fix I think it's covered, but if you can generate the Kernel Panic/Deadlock then this is working as intended.
