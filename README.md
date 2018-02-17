@@ -29,7 +29,7 @@ Compile pa3d:
 > make pa3d
 
 To run the script:
-> chmoud u+x runforever.sh
+> chmoud u+x runforever.sh  
 > ./runforever.sh ./pa3d
 
 This script just loops on pa3d while it doesn't throw an error, so if you get
