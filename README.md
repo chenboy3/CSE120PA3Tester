@@ -37,7 +37,6 @@ deadlocks then it'll break the loop, I think if you can run for 100-200 times
 without errors things should be fine.
 
 ## MassiveTest.c
-Make sure you comment out main.c in pa3d.c before doing this test
 
 Compile with:
 > make massivetest
@@ -118,6 +117,5 @@ System exiting (abnormal)
 Not 100% sure it works since with my bug fix I think it's covered, but if you can generate the Kernel Panic/Deadlock then this is working as intended.
 
 ## Lastly
-Make sure before you turnin you uncomment Main() in pa3d.
 
 If you have any other changes, feel free to submit a pull request!
