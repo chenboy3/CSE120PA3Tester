@@ -13,8 +13,9 @@ Copy over the Makefile (just beware if you made custom targets/dependencies)
 # TESTS
 
 ## Semaphore Testing
-Use Brandon Milton's tests to run that - make sure you comment out ALL DPrintf
-statements in your mykernel3.c
+
+Run Brandon Milton's tests.
+
 Compile with:
 > make semtest
 

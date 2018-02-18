@@ -2,6 +2,7 @@
 #include "mykernel3.h"
 #include "aux.h"
 #include "sys.h"
+#include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -43,11 +44,26 @@ void invalidate() {
   initTester();
 }
 
-/* Override UMIX functions so the tester can extract info */
+/* Stub UMIX functions */
 void Printf(char *fmt, ...) {
-  return;
+  va_list va;
+  va_start(va, fmt);
+  if (debug) {
+    printf("[Printf] ");
+    vprintf(fmt, va);
+  }
+  va_end(va);
 }
 
+void DPrintf(char* fmt, ...) {
+  va_list va;
+  va_start(va, fmt);
+  if (debug) {
+    printf("[DPrintf] ");
+    vprintf(fmt, va);
+  }
+  va_end(va);
+}
 
 int Unblock(int p) {
   if (debug)
@@ -107,7 +123,7 @@ void assert_block_not_called_with() {
     printf("[DEBUG] Expecting last call to NOT BE Block\n");
 
   if (lastCall.valid && lastCall.calledFunction == BLOCK) {
-    printf(">ERR: Did not expect Block call, but called with %d\n", 
+    printf(">ERR: Did not expect Block call, but called with %d\n",
         lastCall.arg);
     failures++;
   }
@@ -119,7 +135,7 @@ void assert_unblock_not_called_with() {
     printf("[DEBUG] Expecting last call to NOT BE Unblock\n");
 
   if (lastCall.valid && lastCall.calledFunction == UNBLOCK) {
-    printf(">ERR: Did not expect Unblock call, but called with %d\n", 
+    printf(">ERR: Did not expect Unblock call, but called with %d\n",
         lastCall.arg);
     failures++;
   }
