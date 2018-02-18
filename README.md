@@ -25,11 +25,11 @@ It'll identify deadlock/starvation scenarios, so do this before you test pa3d.
 
 ## runforever.sh
 Bash Script that runs any one executable forever (only really good for pa3d tbh)
+
 Compile pa3d:
 > make pa3d
 
 To run the script:
-> chmoud u+x runforever.sh  
 > ./runforever.sh ./pa3d
 
 This script just loops on pa3d while it doesn't throw an error, so if you get
@@ -89,30 +89,30 @@ And otherwise just grep/search for 'Kernel Panic/Deadlock Phrases'
 
 Is my own custom test, because I had a stupid bug where when one car finishes and two cars get to the road at the same time, if your logic between letting a car get on the road and updating the number of cars on the road isn't fully atomic you may eventually have a context switch where one car gets approved by the gate, doesn't update the number of cars yet, context switches to the other car which is able to get in through its gate on the other side, and thus you have an incoming crash/deadlock.
 
-For example: (3 approved to enter road, doesn't update the number of cars yet as context switch to 4, so 4 is approved to enter road as number of cars on road is still 0)  
+For example: (3 approved to enter road, doesn't update the number of cars yet as context switch to 4, so 4 is approved to enter road as number of cars on road is still 0)
 
->W---------1E Car 1 enters at 10 at 40 mph  
-W--------1-E Car 1 moves from 10 to 9  
-W-------1--E Car 1 moves from 9 to 8  
-W------1---E Car 1 moves from 8 to 7  
-W-----1----E Car 1 moves from 7 to 6  
-W----1-----E Car 1 moves from 6 to 5  
-W---1------E Car 1 moves from 5 to 4  
-W--1-------E Car 1 moves from 4 to 3  
-W-1--------E Car 1 moves from 3 to 2  
-W1---------E Car 1 moves from 2 to 1  
-W----------E Car 1 exits road  
-W---------3E Car 3 enters at 10 at 50 mph  
-W4--------3E Car 4 enters at 1 at 30 mph  
-W4-------3-E Car 3 moves from 10 to 9  
-W-4------3-E Car 4 moves from 1 to 2  
-W-4-----3--E Car 3 moves from 9 to 8  
-W-4----3---E Car 3 moves from 8 to 7  
-W--4---3---E Car 4 moves from 2 to 3  
-W--4--3----E Car 3 moves from 7 to 6  
-W---4-3----E Car 4 moves from 3 to 4  
-W---43-----E Car 3 moves from 6 to 5  
-Kernel Panic! Processes 2, 3 and 4 are deadlocked  
+>W---------1E Car 1 enters at 10 at 40 mph
+W--------1-E Car 1 moves from 10 to 9
+W-------1--E Car 1 moves from 9 to 8
+W------1---E Car 1 moves from 8 to 7
+W-----1----E Car 1 moves from 7 to 6
+W----1-----E Car 1 moves from 6 to 5
+W---1------E Car 1 moves from 5 to 4
+W--1-------E Car 1 moves from 4 to 3
+W-1--------E Car 1 moves from 3 to 2
+W1---------E Car 1 moves from 2 to 1
+W----------E Car 1 exits road
+W---------3E Car 3 enters at 10 at 50 mph
+W4--------3E Car 4 enters at 1 at 30 mph
+W4-------3-E Car 3 moves from 10 to 9
+W-4------3-E Car 4 moves from 1 to 2
+W-4-----3--E Car 3 moves from 9 to 8
+W-4----3---E Car 3 moves from 8 to 7
+W--4---3---E Car 4 moves from 2 to 3
+W--4--3----E Car 3 moves from 7 to 6
+W---4-3----E Car 4 moves from 3 to 4
+W---43-----E Car 3 moves from 6 to 5
+Kernel Panic! Processes 2, 3 and 4 are deadlocked
 System exiting (abnormal)
 
 Not 100% sure it works since with my bug fix I think it's covered, but if you can generate the Kernel Panic/Deadlock then this is working as intended.
