@@ -34,7 +34,8 @@ To run the script:
 
 This script just loops on pa3d while it doesn't throw an error, so if you get
 deadlocks then it'll break the loop, I think if you can run for 100-200 times
-without errors things should be fine.
+(or even 1000) without errors things should be fine (esp since they'll take the
+highest score out of some number of trials).
 
 ## MassiveTest.c
 Make sure you comment out main.c in pa3d.c before doing this test
