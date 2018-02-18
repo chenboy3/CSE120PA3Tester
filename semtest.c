@@ -2,6 +2,7 @@
 #include "mykernel3.h"
 #include "aux.h"
 #include "sys.h"
+#include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -43,11 +44,26 @@ void invalidate() {
   initTester();
 }
 
-/* Override UMIX functions so the tester can extract info */
+/* Stub UMIX functions */
 void Printf(char *fmt, ...) {
-  return;
+  va_list va;
+  va_start(va, fmt);
+  if (debug) {
+    printf("[Printf] ");
+    vprintf(fmt, va);
+  }
+  va_end(va);
 }
 
+void DPrintf(char* fmt, ...) {
+  va_list va;
+  va_start(va, fmt);
+  if (debug) {
+    printf("[DPrintf] ");
+    vprintf(fmt, va);
+  }
+  va_end(va);
+}
 
 int Unblock(int p) {
   if (debug)

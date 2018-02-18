@@ -1,4 +1,6 @@
+#define Main UselessMain
 #include "pa3d.c"
+#undef Main
 
 // piazza 591
 void test1() {
@@ -627,11 +629,11 @@ void test22() {
   Exit ();
 }
 
-// Specific test to try and cause cars 2 and 3 to get on road at same time - 
+// Specific test to try and cause cars 2 and 3 to get on road at same time -
 // if your updating the number of waiting cars isn't atomic, you might end up
-// with a scenario where car 2/3 gets on the road, but before it updates the 
-// number of cars there's a context switch to car 3, where it can get on the 
-// road. Make sure you print out when a process is blocked in mykernel3 so 
+// with a scenario where car 2/3 gets on the road, but before it updates the
+// number of cars there's a context switch to car 3, where it can get on the
+// road. Make sure you print out when a process is blocked in mykernel3 so
 // you can check to see that they are properly blocking.
 void test23() {
   InitRoad();
@@ -667,6 +669,6 @@ void Main(int c, char* argv[]) {
   }
   DPrintf("Testing Test %d\n", test);
   (*test_ptr[test - 1])();
-  
+
 
 }
