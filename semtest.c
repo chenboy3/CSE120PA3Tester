@@ -241,11 +241,11 @@ void locked_sem_test_all_wait() {
   assert_block_called_with(4);
   MyWait(5,s);
   assert_block_called_with(5);
-  MyWait(1,s);
-  MyWait(1,s);
-  MyWait(1,s);
-  MyWait(1,s);
-  MyWait(1,s);
+  MySignal(1,s);
+  MySignal(1,s);
+  MySignal(1,s);
+  MySignal(1,s);
+  MySignal(1,s);
 }
 
 void locked_sem_test() {
